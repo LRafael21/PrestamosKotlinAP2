@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Ocupaciones")
 data class Ocupacion (
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val Id: Int = 0,
     val descripcion: String,
     val salario: Double
 )
