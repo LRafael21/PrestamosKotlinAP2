@@ -5,11 +5,14 @@ import kotlinx.coroutines.flow.Flow
 import ucne.edu.prestamospersonalesap2s.Entity.Ocupacion
 
 @Dao
-interface DaoOcupaciones {
+interface DaoOcupaciones  {
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(Ocupacion: Ocupacion)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun modificar (Ocupacion: Ocupacion)
 
 
     @Delete
@@ -17,7 +20,10 @@ interface DaoOcupaciones {
 
 
     @Query("SELECT * FROM Ocupaciones")
-    fun getOcupaciones(): Flow<List<Ocupacion>>
+    suspend fun getOcupaciones(): List<Ocupacion>
+
+    /*@Query("SELECT * FROM Ocupaciones")
+    fun getOcupaciones(): Flow<List<Ocupacion>>*/
 
 
     @Query("SELECT * FROM Ocupaciones WHERE Id = :id")

@@ -1,6 +1,7 @@
 package ucne.edu.prestamospersonalesap2s.data
 
 import android.content.Context
+import androidx.lifecycle.ViewModelProvider
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -11,7 +12,7 @@ class PrestamosDb {
 
     @Database(
         entities = [Ocupacion::class],
-        version = 1,
+        version = 2,
         exportSchema = false
     )
 
