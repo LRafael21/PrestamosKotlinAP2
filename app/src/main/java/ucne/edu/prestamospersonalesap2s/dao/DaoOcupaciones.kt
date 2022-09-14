@@ -27,5 +27,5 @@ interface DaoOcupaciones  {
 
 
     @Query("SELECT * FROM Ocupaciones WHERE Id = :id")
-    suspend fun getOcupacionesById(id:Int): Ocupacion?
+    suspend fun getOcupacionesById(id:Int): Ocupacion
 }

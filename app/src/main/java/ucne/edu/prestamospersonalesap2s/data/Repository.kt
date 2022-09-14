@@ -4,4 +4,5 @@ import android.content.Context
 
 class Repository(var context: Context) {
     fun getOcupacionesDao() = PrestamosDb.getInstance(context).DaoOcupaciones
+    fun getPersonasDao() = PrestamosDb.getInstance(context).DaoOcupaciones
 }

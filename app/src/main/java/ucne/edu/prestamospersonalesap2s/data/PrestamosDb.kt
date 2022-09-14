@@ -6,19 +6,24 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import ucne.edu.prestamospersonalesap2s.Entity.Ocupacion
+import ucne.edu.prestamospersonalesap2s.Entity.Persona
 import ucne.edu.prestamospersonalesap2s.dao.DaoOcupaciones
+import ucne.edu.prestamospersonalesap2s.dao.DaoPersonas
 
 class PrestamosDb {
 
     @Database(
-        entities = [Ocupacion::class],
-        version = 2,
+        entities = [Ocupacion::class, Persona::class],
+        version = 3,
         exportSchema = false
     )
 
     abstract class PrestamoDb : RoomDatabase() {
         abstract val DaoOcupaciones: DaoOcupaciones
+        abstract val DaoPersonas: DaoPersonas
     }
+
+
 
     companion object {
 

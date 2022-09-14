@@ -10,22 +10,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import ucne.edu.prestamospersonalesap2s.ui.theme.PrestamosPersonalesAP2STheme
 
 
-
-
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    //   val prestamosDb = PrestamosDb.getInstance(this.applicationContext)
+        //   val prestamosDb = PrestamosDb.getInstance(this.applicationContext)
 
         setContent {
             PrestamosPersonalesAP2STheme {
-                    RegistroScreenKT(context = applicationContext)
+                //RegistroScreenKT(context = applicationContext)
+                RegistroPersonasScreen(context = applicationContext)
             }
         }
     }
-
-
 
 
     @Composable
