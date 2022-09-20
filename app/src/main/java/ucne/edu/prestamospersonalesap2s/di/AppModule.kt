@@ -13,26 +13,15 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-    @Volatile
-    private var INSTANCE: PrestamosDb.PrestamoDb? = null
-
-    fun getInstance(context: Context): PrestamosDb.PrestamoDb {
-        synchronized(this) {
-            var instance = INSTANCE
-
-            if (instance == null) {
-                instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    PrestamosDb.PrestamoDb::class.java,
-                    "Prestamos.Db"
-                )
-                    .fallbackToDestructiveMigration()
-                    .build()
-                INSTANCE = instance
-            }
-            return instance
-        }
-
+    @Singleton
+    @Provides
+    fun providesDataBase(@ApplicationContext context: Context): PrestamosDb {
+        return Room.databaseBuilder(
+            context,
+            PrestamosDb::class.java,
+            "Prestamos.db"
+        ).fallbackToDestructiveMigration().build()
     }
+
+
 }

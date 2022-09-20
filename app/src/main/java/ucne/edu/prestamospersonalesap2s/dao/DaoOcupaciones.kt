@@ -19,13 +19,12 @@ interface DaoOcupaciones  {
     suspend fun delete(Ocupacion: Ocupacion)
 
 
+
     @Query("SELECT * FROM Ocupaciones")
-    suspend fun getOcupaciones(): List<Ocupacion>
-
-    /*@Query("SELECT * FROM Ocupaciones")
-    fun getOcupaciones(): Flow<List<Ocupacion>>*/
+    fun getOcupaciones(): Flow<List<Ocupacion>>
 
 
-    @Query("SELECT * FROM Ocupaciones WHERE Id = :id")
+    @Query("SELECT * FROM Ocupaciones WHERE ocupacionId = :id")
     suspend fun getOcupacionesById(id:Int): Ocupacion
+
 }

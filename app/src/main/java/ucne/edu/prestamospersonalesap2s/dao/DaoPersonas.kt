@@ -2,6 +2,7 @@ package ucne.edu.prestamospersonalesap2s.dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
+import ucne.edu.prestamospersonalesap2s.Entity.Ocupacion
 import ucne.edu.prestamospersonalesap2s.Entity.Persona
 
 @Dao
@@ -19,13 +20,10 @@ interface DaoPersonas  {
     suspend fun delete(persona: Persona)
 
 
-   /* @Query("SELECT * FROM Personas")
-    suspend fun getPersonas(): List<Persona>*/
-
-    /*@Query("SELECT * FROM Personas")
-    fun getPersonas(): Flow<List<Persona>>*/
+    @Query("SELECT * FROM Personas")
+    fun getPersonas(): Flow<List<Persona>>
 
 
-   /* @Query("SELECT * FROM Personas WHERE personaId = :personaId")
-    suspend fun getPersonasById(personaId:Int): Persona*/
+    @Query("SELECT * FROM Personas WHERE personaId = :id")
+    suspend fun getPersonasById(id:Int): Persona
 }
