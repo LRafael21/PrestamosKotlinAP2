@@ -8,10 +8,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Menu
@@ -33,8 +30,9 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun HomeScreen(
-    onClick: () -> Unit,
-    OnClickPersonas: () -> Unit
+    OnClickOcupacion: () -> Unit,
+    OnClickPersonas: () -> Unit,
+    OnClickPrestamos: () -> Unit,
 ) {
     val painter = painterResource(id = ucne.edu.prestamospersonalesap2s.R.drawable.money_27)
     val descripcion = "Prestamos Personales"
@@ -47,13 +45,13 @@ fun HomeScreen(
     Column(modifier = Modifier.fillMaxWidth()) {
         TopAppBar(
             title = { Text(text = "Prestamos Personales") },
-            navigationIcon = {
+           /* navigationIcon = {
                 Icon(imageVector = Icons.Rounded.Menu, contentDescription = null)
 
-            },
+            },*/
             actions = {
 
-                IconButton(onClick = onClick) {
+                IconButton(onClick = OnClickOcupacion) {
                     Icon(
                         imageVector = Icons.Filled.Add,
                         contentDescription = "Agregar Una Ocupacion/Lista de Ocupaciones"
@@ -68,23 +66,58 @@ fun HomeScreen(
                     )
 
                 }
+
+                IconButton(onClick = OnClickPrestamos) {
+                    Icon(
+                        imageVector = Icons.Filled.Check,
+                        contentDescription = "Agregar Una Prestamo/Lista de Prestamo"
+                    )
+
+                }
             }
         )
 
-        Box(modifier = Modifier.fillMaxWidth())
-        {
-            ImageCard(
-                painter = painter,
-                contentDescripcion = descripcion,
-                title = title
+        Column(verticalArrangement = Arrangement.Center) {
+
+
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
             )
-            //Botones para los diferentes registros
-           /* Row() {
-                Button(onClick = { /*TODO*/ }) {
+            {
+                ImageCard(
+                    painter = painter,
+                    contentDescripcion = descripcion,
+                    title = title
+                )
+                //Botones para los diferentes registros
+                Row(
+                ) {
+                    OutlinedButton(
+                        onClick = OnClickOcupacion,
+                        modifier = Modifier.padding(5.dp, 10.dp),
 
+                        ) {
+                        Text(text = "Ocupaciones")
+
+
+                    }
+                    Button(
+                        onClick =  OnClickPersonas ,
+                        modifier = Modifier.padding(5.dp, 10.dp)
+                    ) {
+                        Text(text = "Personas")
+
+                    }
+                    OutlinedButton(
+                        onClick = OnClickPrestamos,
+                        modifier = Modifier.padding(5.dp, 10.dp)
+                    ) {
+                        Text(text = "Prestamos")
+                    }
                 }
-            }*/
 
+            }
         }
 
     }
@@ -125,15 +158,15 @@ fun ImageCard(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(12.dp),
-                contentAlignment = Alignment.Center
+                    .padding(50.dp),
+                contentAlignment = Alignment.TopCenter
             )
             {
                 Text(
                     title, style = TextStyle(
                         color = Color.Red,
                         fontSize = 40.sp,
-                        fontFamily = FontFamily.Cursive
+                        fontFamily = FontFamily.Cursive,
                     )
                 )
 

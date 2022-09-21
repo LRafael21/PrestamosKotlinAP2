@@ -6,17 +6,20 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import ucne.edu.prestamospersonalesap2s.Entity.Ocupacion
 import ucne.edu.prestamospersonalesap2s.Entity.Persona
+import ucne.edu.prestamospersonalesap2s.Entity.Prestamo
 import ucne.edu.prestamospersonalesap2s.dao.DaoOcupaciones
 import ucne.edu.prestamospersonalesap2s.dao.DaoPersonas
+import ucne.edu.prestamospersonalesap2s.dao.DaoPrestamos
 
 @Database(
-    entities = [Ocupacion::class, Persona::class] ,
-    version = 2,
+    entities = [Ocupacion::class, Persona::class, Prestamo::class] ,
+    version = 3,
     exportSchema = false
 )
 abstract class PrestamosDb: RoomDatabase(){
     abstract val daoOcupaciones: DaoOcupaciones
     abstract val daoPersonas: DaoPersonas
+    abstract val daoPrestamos: DaoPrestamos
 
     companion object {
         @Volatile

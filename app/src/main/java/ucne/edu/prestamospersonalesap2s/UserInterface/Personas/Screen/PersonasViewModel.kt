@@ -20,7 +20,7 @@ class PersonasViewModel @Inject constructor(
     var celular by mutableStateOf("")
     var email by mutableStateOf("")
     var direccion by mutableStateOf("")
-    var fechaNacimeinto by mutableStateOf("")
+    var fechaNacimiento by mutableStateOf("")
 
 
     fun Guardar() {
@@ -32,7 +32,7 @@ class PersonasViewModel @Inject constructor(
                     celular = celular,
                     email = email,
                     direccion = direccion,
-                    fechaNacimiento = fechaNacimeinto
+                    fechaNacimiento = fechaNacimiento
                 )
 
             )

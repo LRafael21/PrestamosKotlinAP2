@@ -14,4 +14,6 @@ data class Persona(
     val direccion: String,
     val fechaNacimiento: String,
     val ocupacionId: Int = 0
+    //val ocupacionId : Ocupacion
+
 )

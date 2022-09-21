@@ -19,6 +19,8 @@ import ucne.edu.prestamospersonalesap2s.ui.theme.PrestamosPersonalesAP2STheme
 import ucne.edu.prestamospersonalesap2s.util.Screen
 import androidx.compose.foundation.Image
 import ucne.edu.prestamospersonalesap2s.UserInterface.Personas.List.PersonaListScreen
+import ucne.edu.prestamospersonalesap2s.UserInterface.Prestamos.List.PrestamoListScreen
+import ucne.edu.prestamospersonalesap2s.UserInterface.Prestamos.Screen.RegistroPrestamosScreen
 import ucne.edu.prestamospersonalesap2s.UserInterface.RegistroPersonasScreen
 
 @AndroidEntryPoint
@@ -42,8 +44,10 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable(Screen.home.route) {
                             HomeScreen(
-                                onClick = { navController.navigate(Screen.ocupacionlistscreen.route) },
-                                OnClickPersonas = {navController.navigate(Screen.personalistscreen.route)}
+                                OnClickOcupacion = { navController.navigate(Screen.ocupacionlistscreen.route) },
+                                OnClickPersonas = {navController.navigate(Screen.personalistscreen.route)},
+                                OnClickPrestamos = {navController.navigate(Screen.prestamolistscreen.route)}
+
                             )
                         }
                         composable(Screen.ocupacionlistscreen.route) {
@@ -51,7 +55,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Screen.ocupacionlistscreen.route) {
                             OcupacionListScreen(
-                                onClick = { navController.navigate(Screen.registrocupacionscreen.route) }
+                                OnClickOcupacion = { navController.navigate(Screen.registrocupacionscreen.route) }
                             )
                         }
                         composable(Screen.registrocupacionscreen.route) {
@@ -66,8 +70,22 @@ class MainActivity : ComponentActivity() {
                                 onClickPersonas = { navController.navigate(Screen.registropersonascreen.route) }
                             )
                         }
-                        composable(Screen.registropersonascreen.route) {
-                            RegistroPersonasScreen({ navController.navigateUp() })
+
+                        //Prestamos
+                        composable(Screen.registroprestamoscreen.route) {
+                            RegistroPrestamosScreen({ navController.navigateUp() })
+                        }
+
+                        composable(Screen.prestamolistscreen.route) {
+                            PrestamoListScreen({ navController.navigateUp() })
+                        }
+                        composable(Screen.prestamolistscreen.route) {
+                            PrestamoListScreen(
+                                onClickPrestamos = { navController.navigate(Screen.registroprestamoscreen.route) }
+                            )
+                        }
+                        composable(Screen.registroprestamoscreen.route) {
+                            RegistroPrestamosScreen({ navController.navigateUp() })
                         }
 
 

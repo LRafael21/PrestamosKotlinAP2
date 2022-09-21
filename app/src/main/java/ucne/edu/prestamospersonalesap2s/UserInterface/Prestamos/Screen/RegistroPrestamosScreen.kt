@@ -1,4 +1,4 @@
-package ucne.edu.prestamospersonalesap2s.UserInterface
+package ucne.edu.prestamospersonalesap2s.UserInterface.Prestamos.Screen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,15 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.toSize
 import androidx.hilt.navigation.compose.hiltViewModel
 import ucne.edu.prestamospersonalesap2s.UserInterface.Personas.Screen.PersonasViewModel
-import ucne.edu.prestamospersonalesap2s.data.OcupacionRepository
 
 @Composable
-fun RegistroPersonasScreen(
+fun RegistroPrestamosScreen(
     onNavigateBack: () -> Unit,
-    viewModel: PersonasViewModel = hiltViewModel()
+    viewModel: PrestamosViewModel = hiltViewModel()
 ) {
 
     var context = LocalContext.current
@@ -59,7 +57,7 @@ fun RegistroPersonasScreen(
 
     ) {
         TopAppBar(
-            title = { Text(text = "Registro de Personas") },
+            title = { Text(text = "Registro de Prestamos") },
             modifier = Modifier.padding(0.dp),
             actions = {}
         )
@@ -69,57 +67,23 @@ fun RegistroPersonasScreen(
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Nombres") },
-            value = viewModel.nombres,
-            onValueChange = { viewModel.nombres = it }
+            label = { Text(text = "Fecha") },
+            value = viewModel.fecha,
+            onValueChange = { viewModel.fecha = it }
         )
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Telefono") },
-            value = viewModel.telefono,
-            onValueChange = { viewModel.telefono = it },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-
-        )
-
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Celular") },
-            value = viewModel.celular,
-            onValueChange = { viewModel.celular = it },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-
-        )
-
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Email") },
-            value = viewModel.email,
-            onValueChange = { viewModel.email = it },
-
-            )
-
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Direccion") },
-            value = viewModel.direccion,
-            onValueChange = { viewModel.direccion = it },
-
-            )
-
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Fecha de Nacimiento") },
-            value = viewModel.fechaNacimiento,
-            onValueChange = { viewModel.fechaNacimiento = it },
+            label = { Text(text = "Vence") },
+            value = viewModel.vence,
+            onValueChange = { viewModel.vence = it },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
 
         )
 
         var Expanded by remember { mutableStateOf(false) }
 
-        val Ocupaciones = listOf("Doctor", "Ingeniero", "Abogado", "Profesor")
+        val Personas = listOf("Rafael", "Nicole", "Maria", "Jeison","Samuel","SaiSai")
 
         var SelectedText by remember { mutableStateOf("") }
 
@@ -135,9 +99,9 @@ fun RegistroPersonasScreen(
                 onValueChange = { SelectedText = it },
                 modifier = Modifier.fillMaxWidth(),
                 readOnly = true,
-                label = { Text("Ocupaciones") },
+                label = { Text("Persona") },
                 trailingIcon = {
-                    Icon(icon, "DropDownMenu de ocupaciones",
+                    Icon(icon, "DropDownMenu de personas",
                         Modifier.clickable { Expanded = !Expanded })
                 }
             )
@@ -147,16 +111,42 @@ fun RegistroPersonasScreen(
                 onDismissRequest = { Expanded = false },
                 modifier = Modifier
             ) {
-                Ocupaciones.forEach { Ocupacion ->
+                Personas.forEach { Persona ->
                     DropdownMenuItem(onClick = {
-                        SelectedText = Ocupacion
+                        SelectedText = Persona
                         Expanded = false
                     }) {
-                        Text(text = Ocupacion)
+                        Text(text = Persona)
                     }
                 }
             }
         }
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text(text = "Concepto") },
+            value = viewModel.concepto,
+            onValueChange = { viewModel.concepto = it },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+
+        )
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text(text = "Monto") },
+            value = viewModel.monto,
+            onValueChange = { viewModel.monto = it },
+
+            )
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text(text = "Balance") },
+            value = viewModel.balance,
+            onValueChange = { viewModel.balance = it },
+
+            )
+
 
         Spacer(modifier = Modifier.height(5.dp))
 
@@ -169,7 +159,7 @@ fun RegistroPersonasScreen(
 
         ) {
 
-            Text(text = "Agregar Persona")
+            Text(text = "Agregar Prestamo")
 
         }
 
