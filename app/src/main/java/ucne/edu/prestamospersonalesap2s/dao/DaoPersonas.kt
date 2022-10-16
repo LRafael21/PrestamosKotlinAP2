@@ -2,8 +2,7 @@ package ucne.edu.prestamospersonalesap2s.dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import ucne.edu.prestamospersonalesap2s.Entity.Ocupacion
-import ucne.edu.prestamospersonalesap2s.Entity.Persona
+import ucne.edu.prestamospersonalesap2s.data.entity.Persona
 
 @Dao
 interface DaoPersonas  {
@@ -11,9 +10,6 @@ interface DaoPersonas  {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(persona: Persona)
-
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun modificar (persona: Persona)
 
 
     @Delete
